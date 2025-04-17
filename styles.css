@@ -1,4 +1,5 @@
-* {
+*{
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -47,7 +48,8 @@ body {
 .university-logo {
     width: 90px;
     height: 90px;
-    margin-left: 30px;
+    margin-left: 90px;
+    margin-top: 5px;
 }
 
 .university-info {
@@ -82,6 +84,7 @@ body {
     width: 80px;
     height: 80px;
     margin-bottom: 10px;  /* Space between the logo and the text */
+    margin-right: 70px;
 }
 
 .library-hub {
@@ -89,6 +92,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
+    margin-right: 70px;
 }
 
 .diagonal-shadow-container1 {
@@ -153,12 +157,12 @@ body {
 
 .library-logo {
     width: 114px;
-    height: 106px;
+    height: 114px;
     margin-left: 16px;
     object-fit: cover;
 }
 
-/* Sidebar Styles */
+/* Enhanced Sidebar Styles */
 .sidebar {
     position: fixed;
     top: 125px; /* Exactly matches header height */
@@ -168,59 +172,121 @@ body {
     background-color: #004e99;
     display: flex;
     flex-direction: column;
-    align-items: center;
     overflow-y: auto;
     z-index: 99;
-    gap: 60px; /* Creates spacing without breaking hover area */
+    box-shadow: 4px 0 10px -3px rgba(0, 0, 0, 0.2); /* Right side shadow */
 }
 
 /* Sidebar Item */
 .nav-item {
     width: 100%; /* Full width of sidebar */
+    height: 60px; /* Height of each item */
     display: flex;
     align-items: center;
-    padding: 15px 20px;
+    padding: 0px 20px;
     color: white;
     cursor: pointer;
     background-color: transparent;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-bottom: 10px;
 }
 
-
-.nav-item img {
-    width: 25px;  /* Set a fixed width for the icon */
-    height: auto;  /* Maintain aspect ratio */
-    margin-right: 15px;  /* Space between icon and text */
+/* Active item indicator */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
 }
 
-.nav-item:hover {
-    background-color: #003870;  /* Change the background color when hovering */
+.nav-item:hover::before {
+    background-color: #147ee3; /* Lighter blue indicator */
 }
 
-.nav-item:hover .nav-title {
-    color: #fff;  /* Change the color of the text when the sidebar item is hovered */
-    text-decoration: underline; /* Optional underline effect on text */
+.nav-icon {
+    width: 28px;  /* Slightly larger icon */
+    height: 28px;
+    margin-right: 20px;  /* More space between icon and text */
+    object-fit: contain;
 }
 
 .nav-title {
-    font-size: 16px;
+    font-size: 18px; /* Larger text */
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-/* Make sure the active text still shows the underline */
-.nav-title.active {
-    text-decoration: underline;
+/* Hover effects */
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
 }
 
-
-
-.nav-title.active {
-    text-decoration: underline;
+.nav-item:hover .nav-title {
+    transform: translateX(5px); /* Slight movement on hover */
 }
 
+/* Enhanced Active State Styles */
+.nav-item.active {
+    background-color: rgba(20, 126, 227, 0.2); /* Semi-transparent light blue */
+}
 
+.nav-item.active::before {
+    background-color: #147ee3; /* Solid blue indicator */
+    width: 6px; /* Slightly thicker active indicator */
+}
 
+.nav-item.active .nav-title {
+    color: #fff;
+    font-weight: 700; /* Bolder text */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Subtle glow */
+}
+
+.nav-item.active .nav-icon {
+    filter: brightness(1.2); /* Slightly brighter icon */
+    transform: scale(1.05); /* Slightly larger */
+}
+
+/* Specific active item styling for Transactions */
+.sidebar .nav-item:first-child {
+    background-color: rgba(20, 126, 227, 0.2);
+}
+
+.sidebar .nav-item:first-child::before {
+    background-color: #147ee3;
+    width: 6px;
+}
+
+.sidebar .nav-item:first-child .nav-title {
+    color: #fff;
+    font-weight: 700;
+}
+
+.sidebar .nav-item:first-child .nav-icon {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+/* Logout button at bottom */
+.sidebar .nav-item:last-child {
+    margin-top: auto;
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
+/* Optional: Add some subtle animation to icons */
+.nav-icon {
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+    transform: scale(1.1);
+}
 
 /* Main Content Styles */
 .main-content {
@@ -302,4 +368,3 @@ td {
     font-size: 12px;
     padding: 0 16px;
 }
-
