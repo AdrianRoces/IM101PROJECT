@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Transactions</title>
     <link rel="stylesheet" href="styles.css">
+  
 </head>
 <body>
     <div class="header">
@@ -88,21 +89,18 @@
                     <div class="card-content">
                         <table>
                             <thead>
-                              <tr>
-                                <th>ROOM</th>
-                                <th>DATE</th>
-                                <th>TIME</th>
-                                <th>PURPOSE</th>
-                                <th>NO. OF MEMBERS</th>
-                                <th>NAMES</th>
-                                <th>STATUS</th>
-                                <th>ACTION</th>
-                              </tr>
+                                <tr>
+                                    <th>ROOM DETAILS</th>
+                                    <th>RESERVATION DATE</th>
+                                    <th>END DATE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
                             </thead>
-                            <tbody id="roomReservationBody">
-                              <!-- Room reservation data will be inserted here -->
+                            <tbody>
+                                <!-- Room data would go here -->
                             </tbody>
-                          </table>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -117,7 +115,7 @@
             </div>
         </div>
     </div>
-<!--reservation form-->
+
     <div class="main-content section" id="roomreservations-section" style="display: none;">
         <div class="tabs-container">
             <div class="card-content">
@@ -131,42 +129,42 @@
                         <li>Eating and drinking are not allowed inside the Collab Room.</li>
                     </ol>
                 </div>
-
+    
                 <form id="reservationForm">
                     <div class="form-group">
                         <label for="numStudents">No. of Students/Members:</label>
                         <input type="number" id="numStudents" name="numStudents" min="5" max="10" required>
                     </div>
-
+    
                     <div class="form-group">
                         <label>Names of Members:</label>
                         <div id="membersContainer" class="members-list"></div>
                         <button type="button" id="addMemberBtn" class="add-member">Add Member</button>
                     </div>
-
+    
                     <div class="form-group">
                         <label for="reservationDate">Date:</label>
                         <input type="date" id="reservationDate" name="reservationDate" required>
                     </div>
-
+    
                     <div class="form-group">
                         <label for="reservationTime">Time:</label>
                         <input type="time" id="reservationTime" name="reservationTime" required>
                     </div>
-
+    
                     <div class="form-group">
                         <label for="purpose">Purpose:</label>
                         <textarea id="purpose" name="purpose" required></textarea>
                     </div>
-
+    
                     <div class="consent-check">
                         <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
                         <label for="privacyConsent">Privacy Consent: By checking this box I am allowing the Quezon City University to use my information for all my QCU transactions.</label>
                     </div>
-
+    
                     <button type="submit" id="submitBtn">SUBMIT</button>
                 </form>
-
+    
                 <div id="confirmation" class="confirmation" style="display: none;">
                     <h2>Reservation Submitted Successfully!</h2>
                     <p>Your collaboration room reservation has been received. Please arrive on time for your scheduled reservation.</p>
@@ -175,7 +173,7 @@
             </div>
         </div>
     </div>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const dateInput = document.getElementById('reservationDate');
@@ -183,35 +181,35 @@
             tomorrow.setDate(tomorrow.getDate() + 1);
             const minDate = tomorrow.toISOString().split('T')[0];
             dateInput.min = minDate;
-
+    
             const addMemberBtn = document.getElementById('addMemberBtn');
             const membersContainer = document.getElementById('membersContainer');
             const numStudentsInput = document.getElementById('numStudents');
-
-            numStudentsInput.addEventListener('change', function () {
+    
+            numStudentsInput.addEventListener('change', function() {
                 const numStudents = parseInt(this.value);
                 if (numStudents >= 5 && numStudents <= 10) {
                     updateMemberInputs(numStudents);
                 }
             });
-
+    
             updateMemberInputs(5);
             numStudentsInput.value = 5;
-
+    
             function updateMemberInputs(count) {
                 membersContainer.innerHTML = '';
                 for (let i = 0; i < count; i++) {
                     const memberDiv = document.createElement('div');
                     memberDiv.className = 'member-input';
                     memberDiv.innerHTML = `
-                        <input type="text" name="member${i + 1}" placeholder="Member ${i + 1} Full Name" required>
+                        <input type="text" name="member${i+1}" placeholder="Member ${i+1} Full Name" required>
                         <button type="button" class="remove-member" ${count <= 5 ? 'disabled' : ''}>-</button>
                     `;
                     membersContainer.appendChild(memberDiv);
-
+    
                     const removeBtn = memberDiv.querySelector('.remove-member');
                     if (removeBtn) {
-                        removeBtn.addEventListener('click', function () {
+                        removeBtn.addEventListener('click', function() {
                             if (membersContainer.children.length > 5) {
                                 membersContainer.removeChild(memberDiv);
                                 numStudentsInput.value = membersContainer.children.length;
@@ -220,21 +218,21 @@
                     }
                 }
             }
-
-            addMemberBtn.addEventListener('click', function () {
+    
+            addMemberBtn.addEventListener('click', function() {
                 const currentCount = membersContainer.children.length;
                 if (currentCount < 10) {
                     const memberDiv = document.createElement('div');
                     memberDiv.className = 'member-input';
                     memberDiv.innerHTML = `
-                        <input type="text" name="member${currentCount + 1}" placeholder="Member ${currentCount + 1} Full Name" required>
+                        <input type="text" name="member${currentCount+1}" placeholder="Member ${currentCount+1} Full Name" required>
                         <button type="button" class="remove-member">-</button>
                     `;
                     membersContainer.appendChild(memberDiv);
                     numStudentsInput.value = membersContainer.children.length;
-
+    
                     const removeBtn = memberDiv.querySelector('.remove-member');
-                    removeBtn.addEventListener('click', function () {
+                    removeBtn.addEventListener('click', function() {
                         if (membersContainer.children.length > 5) {
                             membersContainer.removeChild(memberDiv);
                             numStudentsInput.value = membersContainer.children.length;
@@ -242,119 +240,66 @@
                     });
                 }
             });
-
-            document.getElementById('reservationForm').addEventListener('submit', function (e) {
+    
+            document.getElementById('reservationForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const timeInput = document.getElementById('reservationTime').value;
-                const dateInput = document.getElementById('reservationDate').value;
-                const purpose = document.getElementById('purpose').value;
-                const numMembers = numStudentsInput.value;
-                const members = Array.from(membersContainer.querySelectorAll('input[type="text"]')).map(input => input.value);
-
+    
                 document.getElementById('reservationForm').style.display = 'none';
                 const confirmation = document.getElementById('confirmation');
                 confirmation.style.display = 'block';
-
+    
                 const details = document.getElementById('reservationDetails');
                 details.innerHTML = `
-                    <p><strong>Number of Members:</strong> ${numMembers}</p>
-                    <p><strong>Date:</strong> ${dateInput}</p>
+                    <p><strong>Number of Members:</strong> ${numStudentsInput.value}</p>
+                    <p><strong>Date:</strong> ${document.getElementById('reservationDate').value}</p>
                     <p><strong>Time:</strong> ${timeInput}</p>
-                    <p><strong>Purpose:</strong> ${purpose}</p>
+                    <p><strong>Purpose:</strong> ${document.getElementById('purpose').value}</p>
                     <h3>Members:</h3>
                     <ul>
-                        ${members.map(member => `<li>${member}</li>`).join('')}
+                        ${Array.from(membersContainer.querySelectorAll('input[type="text"]'))
+                            .map(input => `<li>${input.value}</li>`)
+                            .join('')}
                     </ul>
                 `;
-
-                // Append data to Room tab in Transactions
-                const roomTableBody = document.getElementById('roomReservationBody');
-const newRow = document.createElement('tr');
-
-newRow.innerHTML = `
-  <td>1</td>
-  <td>${dateInput}</td>
-  <td>${timeInput}</td>
-  <td>${purpose}</td>
-  <td><i>${numMembers}</i></td>
-  <td>${members.join('<br>')}</td>
-  <td>APPROVED</td>
-  <td>
-    <button class="edit-btn">EDIT</button>
-    <button class="cancel-btn">CANCEL</button>
-  </td>
-`;
-
-roomTableBody.appendChild(newRow);
-
-// ADD event listeners for EDIT and CANCEL buttons
-const editBtn = newRow.querySelector('.edit-btn');
-const cancelBtn = newRow.querySelector('.cancel-btn');
-
-editBtn.addEventListener('click', () => {
-  // Load data back to form
-  document.getElementById('reservationDate').value = dateInput;
-  document.getElementById('reservationTime').value = timeInput;
-  document.getElementById('purpose').value = purpose;
-  numStudentsInput.value = numMembers;
-  updateMemberInputs(numMembers);
-  membersContainer.querySelectorAll('input[type="text"]').forEach((input, i) => {
-    input.value = members[i] || '';
-  });
-
-  // Show form and hide confirmation
-  document.getElementById('reservationForm').style.display = 'block';
-  document.getElementById('confirmation').style.display = 'none';
-
-  // Remove the row so it can be replaced
-  roomTableBody.removeChild(newRow);
-});
-
-cancelBtn.addEventListener('click', () => {
-  if (confirm("Are you sure you want to cancel this reservation?")) {
-    roomTableBody.removeChild(newRow);
-  }
-});
-
-
-                // Navigate to ROOM tab in Transactions
-                document.querySelector('.sidebar .nav-item[data-target="transactions-section"]').click();
-                document.querySelectorAll('.tab-trigger').forEach(tab => tab.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
-
-                document.querySelector('.tab-trigger:nth-child(2)').classList.add('active');
-                document.getElementById('room-tab').style.display = 'block';
             });
         });
-
-        // Sidebar navigation
+    </script>
+    <script>
+        // Sidebar navigation switching
         document.querySelectorAll('.sidebar .nav-item').forEach(item => {
             item.addEventListener('click', () => {
                 const target = item.getAttribute('data-target');
 
+                // Remove 'active' from all nav titles
                 document.querySelectorAll('.nav-title').forEach(nav => nav.classList.remove('active'));
                 item.querySelector('.nav-title').classList.add('active');
 
+                // Hide all main content sections
                 document.querySelectorAll('.main-content.section').forEach(section => {
                     section.style.display = 'none';
                 });
 
+                // Show the selected section
                 if (target) {
                     document.getElementById(target).style.display = 'block';
                 }
             });
         });
 
-        // Tab switching
+        // Tab switching inside Transactions
         document.querySelectorAll('.tab-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
+                // Deactivate all tabs
                 document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
                 trigger.classList.add('active');
 
+                // Hide all tab contents
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.style.display = 'none';
                 });
 
+                // Show selected tab
                 const tabId = trigger.textContent.toLowerCase() + '-tab';
                 document.getElementById(tabId).style.display = 'block';
             });
@@ -362,3 +307,6 @@ cancelBtn.addEventListener('click', () => {
     </script>
 </body>
 </html>
+
+
+
