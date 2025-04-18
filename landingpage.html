@@ -1,134 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Transactions</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="header">
-        <div class="header-content">
-            <img src="pictures/Qcu logo.png" alt="QCU Logo" class="university-logo">
-            <div class="university-info">
-                <h1 class="university-name">Quezon City University</h1>
-                <p class="campus-locations">San Bartolome | San Francisco | Batasan</p>
-            </div>
-            <div class="right-section">
-                <img src="pictures/library.jpg" alt="Library Icon" class="library-icon">
-                <div class="library-hub">Library Hub</div>
-            </div>
-        </div>
-        <div class="diagonal-shape"></div>
-            <div class="diagonal-shadow-container1">
-                <div class="diagonal-shadow1"></div>
-            </div>
-        <div class="diagonal-shadow-container2">
-            <div class="diagonal-shadow2"></div>
-        </div>
-    
-    </div>
-        
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="nav-item">
-                <img class="nav-icon" src="pictures/transaction.png" alt="Transactions">
-                <div class="nav-title active">TRANSACTIONS</div>
-            </div>
-            <div class="nav-item">
-                <img class="nav-icon" src="pictures/bookresrv.png" alt="Book Request">
-                <div class="nav-title">BOOK REQUEST</div>
-            </div>
-            <div class="nav-item">
-                <img class="nav-icon" src="pictures/roomresrv.png" alt="Room Reservations">
-                <div class="nav-title">ROOM RESERVATIONS</div>
-            </div>
-            <div class="nav-item">
-                <img class="nav-icon" src="pictures/logout.png" alt="Logout">
-                <div class="nav-title">LOGOUT</div>
-            </div>
-        </div>
-        
-        
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="tabs-container">
-                <div class="tabs-list">
-                    <button class="tab-trigger active">BOOK</button>
-                    <button class="tab-trigger">ROOM</button>
-                </div>
-                
-                <div class="tab-content" id="book-tab">
-                    <div class="card">
-                        <div class="card-content">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>BOOK DETAILS</th>
-                                        <th>BORROW DATE</th>
-                                        <th>DUE DATE</th>
-                                        <th>STATUS</th>
-                                        <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>MATERNAL</td>
-                                        <td>08/23/2024</td>
-                                        <td>08/23/2025</td>
-                                        <td>APPROVED</td>
-                                        <td>IN USE</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Room tab content would go here -->
-                <div class="tab-content" id="room-tab" style="display: none;">
-                    <div class="card">
-                        <div class="card-content">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>ROOM DETAILS</th>
-                                        <th>RESERVATION DATE</th>
-                                        <th>END DATE</th>
-                                        <th>STATUS</th>
-                                        <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Room data would go here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Transactions</title>
+  <link rel="stylesheet" href="landingpage.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
-    <script>
-        // Simple tab switching functionality
-        document.querySelectorAll('.tab-trigger').forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                // Remove active class from all triggers
-                document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
-                // Add active class to clicked trigger
-                trigger.classList.add('active');
-                
-                // Hide all tab contents
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.style.display = 'none';
-                });
-                
-                // Show the corresponding tab content
-                const tabId = trigger.textContent.toLowerCase() + '-tab';
-                document.getElementById(tabId).style.display = 'block';
-            });
+    body {
+      font-family: 'Roboto Slab', serif;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+  <div class="header">
+    <div class="header-content">
+      <img src="pictures/Qcu logo.png" alt="QCU Logo" class="university-logo">
+      <div class="university-info">
+        <h1 class="university-name">Quezon City University</h1>
+        <p class="campus-locations">San Bartolome | San Francisco | Batasan</p>
+      </div>
+      <div class="right-section">
+        <img src="pictures/library.jpg" alt="Library Icon" class="library-icon">
+        <div class="library-hub">Library Hub</div>
+      </div>
+    </div>
+    <div class="diagonal-shape"></div>
+    <div class="diagonal-shadow-container1">
+      <div class="diagonal-shadow1"></div>
+    </div>
+    <div class="diagonal-shadow-container2">
+      <div class="diagonal-shadow2"></div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="nav-item">
+      <img class="nav-icon" src="pictures/transaction.png" alt="Transactions">
+      <div class="nav-title active">TRANSACTIONS</div>
+    </div>
+    <div class="nav-item" id="book-request-btn">
+      <img class="nav-icon" src="pictures/bookresrv.png" alt="Book Request">
+      <div class="nav-title">BOOK REQUEST</div>
+    </div>
+    <div class="nav-item">
+      <img class="nav-icon" src="pictures/roomresrv.png" alt="Room Reservations">
+      <div class="nav-title">ROOM RESERVATIONS</div>
+    </div>
+    <div class="nav-item">
+      <img class="nav-icon" src="pictures/logout.png" alt="Logout">
+      <div class="nav-title">LOGOUT</div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div id="main-view">
+      <div class="tabs-container">
+        <div class="tabs-list">
+          <button class="tab-trigger active">BOOK</button>
+          <button class="tab-trigger">ROOM</button>
+        </div>
+
+        <div class="tab-content" id="book-tab">
+          <div class="card">
+            <div class="card-content">
+              <table>
+                <thead>
+                  <tr>
+                    <th>BOOK DETAILS</th>
+                    <th>BORROW DATE</th>
+                    <th>DUE DATE</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>MATERNAL</td>
+                    <td>08/23/2024</td>
+                    <td>08/23/2025</td>
+                    <td>APPROVED</td>
+                    <td>IN USE</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="room-tab" style="display: none;">
+          <div class="card">
+            <div class="card-content">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ROOM DETAILS</th>
+                    <th>RESERVATION DATE</th>
+                    <th>END DATE</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Room data would go here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching logic
+    document.querySelectorAll('.tab-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
+        trigger.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.style.display = 'none';
         });
-    </script>
+        const tabId = trigger.textContent.toLowerCase() + '-tab';
+        document.getElementById(tabId).style.display = 'block';
+      });
+    });
+
+    // Book Request Button: Load Book Gallery View (Desktop Optimized)
+    document.getElementById('book-request-btn').addEventListener('click', () => {
+      const mainView = document.getElementById('main-view');
+      mainView.innerHTML = `
+        <div class="max-w-[1200px] mx-auto p-8">
+          <form class="mb-10">
+            <div class="flex items-center bg-[#004080] rounded-full max-w-lg mx-auto shadow-lg overflow-hidden">
+              <input
+                type="text"
+                placeholder="SEARCH"
+                class="flex-grow bg-[#004080] text-white placeholder-white px-6 py-3 text-lg font-medium focus:outline-none"
+              />
+              <button type="submit" class="pr-5">
+                <i class="fas fa-search text-white text-xl"></i>
+              </button>
+            </div>
+          </form>
+          <div class="grid grid-cols-4 gap-10">
+            <div class="flex justify-center hover:scale-105 transition-transform">
+              <img src="https://placehold.co/120x180/000080/ffffff?text=Computer+Programming+Book+1" alt="Book 1" class="w-32" />
+            </div>
+            <div class="flex justify-center hover:scale-105 transition-transform">
+              <img src="https://placehold.co/120x180/004d40/ffffff?text=Computer+Programming+Book+2" alt="Book 2" class="w-32" />
+            </div>
+            <div class="flex justify-center hover:scale-105 transition-transform">
+              <img src="https://placehold.co/120x180/000000/ffff00?text=Python+Programming+SQL" alt="Book 3" class="w-32" />
+            </div>
+            <div class="flex justify-center hover:scale-105 transition-transform">
+              <img src="https://placehold.co/120x180/003366/ffffff?text=Computer+Programming+Book+4" alt="Book 4" class="w-32" />
+            </div>
+            <div class="flex justify-center hover:scale-105 transition-transform">
+              <img src="https://placehold.co/120x180/336600/ffff00?text=Computer+Programming+Fundamentals" alt="Book 5" class="w-32" />
+            </div>
+            <div class="flex justify-center hover:scale-105 transition-transform">
+              <img src="https://placehold.co/120x180/003399/ffffff?text=Computer+Programming+Book+6" alt="Book 6" class="w-32" />
+            </div>
+            <div class="flex justify-center hover:scale-105 transition-transform">
+              <img src="https://placehold.co/120x180/f5f5dc/000000?text=The+Art+of+Computer+Programming" alt="Book 7" class="w-32" />
+            </div>
+            <div class="flex justify-center hover:scale-105 transition-transform">
+              <img src="https://placehold.co/120x180/000000/ffff00?text=Python+Programming+for+Beginners" alt="Book 8" class="w-32" />
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  </script>
 </body>
 </html>
