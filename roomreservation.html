@@ -1,312 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Transactions</title>
-    <link rel="stylesheet" href="styles.css">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library Transactions</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <div class="header">
-        <div class="header-content">
-            <img src="Qcu logo.png" alt="QCU Logo" class="university-logo">
-            <div class="university-info">
-                <h1 class="university-name">Quezon City University</h1>
-                <p class="campus-locations">San Bartolome | San Francisco | Batasan</p>
-            </div>
-            <div class="right-section">
-                <img src="library.jpg" alt="Library Icon" class="library-icon">
-                <div class="library-hub">Library Hub</div>
-            </div>
-        </div>
-        <div class="diagonal-shape"></div>
-        <div class="diagonal-shadow-container1">
-            <div class="diagonal-shadow1"></div>
-        </div>
-        <div class="diagonal-shadow-container2">
-            <div class="diagonal-shadow2"></div>
-        </div>
+  <div class="header">
+    <div class="header-content">
+      <img src="Qcu logo.png" alt="QCU Logo" class="university-logo" />
+      <div class="university-info">
+        <h1 class="university-name">Quezon City University</h1>
+        <p class="campus-locations">San Bartolome | San Francisco | Batasan</p>
+      </div>
+      <div class="right-section">
+        <img src="library.jpg" alt="Library Icon" class="library-icon" />
+        <div class="library-hub">Library Hub</div>
+      </div>
     </div>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="nav-item" data-target="transactions-section">
-            <img class="nav-icon" src="transaction.png" alt="Transactions">
-            <div class="nav-title active">TRANSACTIONS</div>
-        </div>
-        <div class="nav-item" data-target="bookrequest-section">
-            <img class="nav-icon" src="bookreq.png" alt="Book Request">
-            <div class="nav-title">BOOK REQUEST</div>
-        </div>
-        <div class="nav-item" data-target="roomreservations-section">
-            <img class="nav-icon" src="roomresrv.png" alt="Room Reservations">
-            <div class="nav-title">ROOM RESERVATIONS</div>
-        </div>
-        <div class="nav-item">
-            <img class="nav-icon" src="logout.png" alt="Logout">
-            <div class="nav-title">LOGOUT</div>
-        </div>
+    <div class="diagonal-shape"></div>
+    <div class="diagonal-shadow-container1">
+      <div class="diagonal-shadow1"></div>
     </div>
-
-    <!-- Main Content Sections -->
-    <div class="main-content section" id="transactions-section">
-        <div class="tabs-container">
-            <div class="tabs-list">
-                <button class="tab-trigger active">BOOK</button>
-                <button class="tab-trigger">ROOM</button>
-            </div>
-
-            <div class="tab-content" id="book-tab">
-                <div class="card">
-                    <div class="card-content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>BOOK DETAILS</th>
-                                    <th>BORROW DATE</th>
-                                    <th>DUE DATE</th>
-                                    <th>STATUS</th>
-                                    <th>ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>MATERNAL</td>
-                                    <td>08/23/2024</td>
-                                    <td>08/23/2025</td>
-                                    <td>APPROVED</td>
-                                    <td>IN USE</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="room-tab" style="display: none;">
-                <div class="card">
-                    <div class="card-content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ROOM DETAILS</th>
-                                    <th>RESERVATION DATE</th>
-                                    <th>END DATE</th>
-                                    <th>STATUS</th>
-                                    <th>ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Room data would go here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="diagonal-shadow-container2">
+      <div class="diagonal-shadow2"></div>
     </div>
+  </div>
 
-    <div class="main-content section" id="bookrequest-section" style="display: none;">
-        <div class="card">
-            <div class="card-content">
-                <h2>Book Request Page</h2>
-                <p>This is where the book request feature will go.</p>
-            </div>
-        </div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="nav-item">
+      <img class="nav-icon" src="transaction.png" alt="Transactions" />
+      <div class="nav-title">TRANSACTIONS</div>
     </div>
+    <div class="nav-item">
+      <img class="nav-icon" src="bookreq.png" alt="Book Request" />
+      <div class="nav-title">BOOK REQUEST</div>
+    </div>
+    <div class="nav-item active">
+      <img class="nav-icon" src="roomresrv.png" alt="Room Reservations" />
+      <div class="nav-title">ROOM RESERVATIONS</div>
+    </div>
+    <div class="nav-item">
+      <img class="nav-icon" src="logout.png" alt="Logout" />
+      <div class="nav-title">LOGOUT</div>
+    </div>
+  </div>
 
-    <div class="main-content section" id="roomreservations-section" style="display: none;">
-        <div class="tabs-container">
-            <div class="card-content">
-                <div class="guidelines">
-                    <h2>For Collab Room Reservation please READ the guidelines.</h2>
-                    <ol>
-                        <li>Collaboration rooms may be reserved one day in advance. Same day reservation automatically cancelled.</li>
-                        <li>If a group does not claim a reservation within 15 minutes of the scheduled reservation, it will be forfeited.</li>
-                        <li>Collab Rooms may be reserved for a maximum of 1 hour per day.</li>
-                        <li>Each Collab Room's capacity is minimum of 5, maximum of 10 persons.</li>
-                        <li>Eating and drinking are not allowed inside the Collab Room.</li>
-                    </ol>
-                </div>
-    
-                <form id="reservationForm">
-                    <div class="form-group">
-                        <label for="numStudents">No. of Students/Members:</label>
-                        <input type="number" id="numStudents" name="numStudents" min="5" max="10" required>
-                    </div>
-    
-                    <div class="form-group">
-                        <label>Names of Members:</label>
-                        <div id="membersContainer" class="members-list"></div>
-                        <button type="button" id="addMemberBtn" class="add-member">Add Member</button>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="reservationDate">Date:</label>
-                        <input type="date" id="reservationDate" name="reservationDate" required>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="reservationTime">Time:</label>
-                        <input type="time" id="reservationTime" name="reservationTime" required>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="purpose">Purpose:</label>
-                        <textarea id="purpose" name="purpose" required></textarea>
-                    </div>
-    
-                    <div class="consent-check">
-                        <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
-                        <label for="privacyConsent">Privacy Consent: By checking this box I am allowing the Quezon City University to use my information for all my QCU transactions.</label>
-                    </div>
-    
-                    <button type="submit" id="submitBtn">SUBMIT</button>
-                </form>
-    
-                <div id="confirmation" class="confirmation" style="display: none;">
-                    <h2>Reservation Submitted Successfully!</h2>
-                    <p>Your collaboration room reservation has been received. Please arrive on time for your scheduled reservation.</p>
-                    <div id="reservationDetails"></div>
-                </div>
-            </div>
+  <!-- Main Content -->
+  <div class="main-content section" id="roomreservations-section" style="display: block;">
+    <div class="tabs-container">
+      <div class="card-content">
+        <div class="guidelines">
+          <h2>For Collab Room Reservation please READ the guidelines.</h2>
+          <ol>
+            <li>Collaboration rooms may be reserved one day in advance. Same day reservation automatically cancelled.</li>
+            <li>If a group does not claim a reservation within 15 minutes of the scheduled reservation, it will be forfeited.</li>
+            <li>Collab Rooms may be reserved for a maximum of 1 hour per day.</li>
+            <li>Each Collab Room's capacity is minimum of 5, maximum of 10 persons.</li>
+            <li>Eating and drinking are not allowed inside the Collab Room.</li>
+          </ol>
         </div>
+
+        <form id="reservationForm">
+          <div class="form-group">
+            <label for="numStudents">No. of Students/Members:</label>
+            <input type="number" id="numStudents" name="numStudents" min="5" max="10" required />
+          </div>
+
+          <div class="form-group">
+            <label>Names of Members:</label>
+            <div id="membersContainer" class="members-list"></div>
+            <button type="button" id="addMemberBtn" class="add-member">Add Member</button>
+          </div>
+
+          <div class="form-group">
+            <label for="reservationDate">Date:</label>
+            <input type="date" id="reservationDate" name="reservationDate" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reservationTime">Time:</label>
+            <input type="time" id="reservationTime" name="reservationTime" required />
+          </div>
+
+          <div class="form-group">
+            <label for="purpose">Purpose:</label>
+            <textarea id="purpose" name="purpose" required></textarea>
+          </div>
+
+          <div class="consent-check">
+            <input type="checkbox" id="privacyConsent" name="privacyConsent" required />
+            <label for="privacyConsent">
+              Privacy Consent: By checking this box I am allowing the Quezon City University to use my information for all my QCU transactions.
+            </label>
+          </div>
+
+          <button type="submit" id="submitBtn">SUBMIT</button>
+        </form>
+
+        <div id="confirmation" class="confirmation" style="display: none;">
+          <h2>Reservation Submitted Successfully!</h2>
+          <p>Your collaboration room reservation has been received. Please arrive on time for your scheduled reservation.</p>
+          <div id="reservationDetails"></div>
+        </div>
+      </div>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const dateInput = document.getElementById('reservationDate');
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const minDate = tomorrow.toISOString().split('T')[0];
-            dateInput.min = minDate;
-    
-            const addMemberBtn = document.getElementById('addMemberBtn');
-            const membersContainer = document.getElementById('membersContainer');
-            const numStudentsInput = document.getElementById('numStudents');
-    
-            numStudentsInput.addEventListener('change', function() {
-                const numStudents = parseInt(this.value);
-                if (numStudents >= 5 && numStudents <= 10) {
-                    updateMemberInputs(numStudents);
-                }
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const dateInput = document.getElementById('reservationDate');
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const minDate = tomorrow.toISOString().split('T')[0];
+      dateInput.min = minDate;
+
+      const addMemberBtn = document.getElementById('addMemberBtn');
+      const membersContainer = document.getElementById('membersContainer');
+      const numStudentsInput = document.getElementById('numStudents');
+
+      numStudentsInput.addEventListener('change', function () {
+        const numStudents = parseInt(this.value);
+        if (numStudents >= 5 && numStudents <= 10) {
+          updateMemberInputs(numStudents);
+        }
+      });
+
+      updateMemberInputs(5);
+      numStudentsInput.value = 5;
+
+      function updateMemberInputs(count) {
+        membersContainer.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+          const memberDiv = document.createElement('div');
+          memberDiv.className = 'member-input';
+          memberDiv.innerHTML = `
+            <input type="text" name="member${i + 1}" placeholder="Member ${i + 1} Full Name" required>
+            <button type="button" class="remove-member" ${count <= 5 ? 'disabled' : ''}>-</button>
+          `;
+          membersContainer.appendChild(memberDiv);
+
+          const removeBtn = memberDiv.querySelector('.remove-member');
+          if (removeBtn) {
+            removeBtn.addEventListener('click', function () {
+              if (membersContainer.children.length > 5) {
+                membersContainer.removeChild(memberDiv);
+                numStudentsInput.value = membersContainer.children.length;
+              }
             });
-    
-            updateMemberInputs(5);
-            numStudentsInput.value = 5;
-    
-            function updateMemberInputs(count) {
-                membersContainer.innerHTML = '';
-                for (let i = 0; i < count; i++) {
-                    const memberDiv = document.createElement('div');
-                    memberDiv.className = 'member-input';
-                    memberDiv.innerHTML = `
-                        <input type="text" name="member${i+1}" placeholder="Member ${i+1} Full Name" required>
-                        <button type="button" class="remove-member" ${count <= 5 ? 'disabled' : ''}>-</button>
-                    `;
-                    membersContainer.appendChild(memberDiv);
-    
-                    const removeBtn = memberDiv.querySelector('.remove-member');
-                    if (removeBtn) {
-                        removeBtn.addEventListener('click', function() {
-                            if (membersContainer.children.length > 5) {
-                                membersContainer.removeChild(memberDiv);
-                                numStudentsInput.value = membersContainer.children.length;
-                            }
-                        });
-                    }
-                }
+          }
+        }
+      }
+
+      addMemberBtn.addEventListener('click', function () {
+        const currentCount = membersContainer.children.length;
+        if (currentCount < 10) {
+          const memberDiv = document.createElement('div');
+          memberDiv.className = 'member-input';
+          memberDiv.innerHTML = `
+            <input type="text" name="member${currentCount + 1}" placeholder="Member ${currentCount + 1} Full Name" required>
+            <button type="button" class="remove-member">-</button>
+          `;
+          membersContainer.appendChild(memberDiv);
+          numStudentsInput.value = membersContainer.children.length;
+
+          const removeBtn = memberDiv.querySelector('.remove-member');
+          removeBtn.addEventListener('click', function () {
+            if (membersContainer.children.length > 5) {
+              membersContainer.removeChild(memberDiv);
+              numStudentsInput.value = membersContainer.children.length;
             }
-    
-            addMemberBtn.addEventListener('click', function() {
-                const currentCount = membersContainer.children.length;
-                if (currentCount < 10) {
-                    const memberDiv = document.createElement('div');
-                    memberDiv.className = 'member-input';
-                    memberDiv.innerHTML = `
-                        <input type="text" name="member${currentCount+1}" placeholder="Member ${currentCount+1} Full Name" required>
-                        <button type="button" class="remove-member">-</button>
-                    `;
-                    membersContainer.appendChild(memberDiv);
-                    numStudentsInput.value = membersContainer.children.length;
-    
-                    const removeBtn = memberDiv.querySelector('.remove-member');
-                    removeBtn.addEventListener('click', function() {
-                        if (membersContainer.children.length > 5) {
-                            membersContainer.removeChild(memberDiv);
-                            numStudentsInput.value = membersContainer.children.length;
-                        }
-                    });
-                }
-            });
-    
-            document.getElementById('reservationForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const timeInput = document.getElementById('reservationTime').value;
-    
-                document.getElementById('reservationForm').style.display = 'none';
-                const confirmation = document.getElementById('confirmation');
-                confirmation.style.display = 'block';
-    
-                const details = document.getElementById('reservationDetails');
-                details.innerHTML = `
-                    <p><strong>Number of Members:</strong> ${numStudentsInput.value}</p>
-                    <p><strong>Date:</strong> ${document.getElementById('reservationDate').value}</p>
-                    <p><strong>Time:</strong> ${timeInput}</p>
-                    <p><strong>Purpose:</strong> ${document.getElementById('purpose').value}</p>
-                    <h3>Members:</h3>
-                    <ul>
-                        ${Array.from(membersContainer.querySelectorAll('input[type="text"]'))
-                            .map(input => `<li>${input.value}</li>`)
-                            .join('')}
-                    </ul>
-                `;
-            });
-        });
-    </script>
-    <script>
-        // Sidebar navigation switching
-        document.querySelectorAll('.sidebar .nav-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const target = item.getAttribute('data-target');
+          });
+        }
+      });
 
-                // Remove 'active' from all nav titles
-                document.querySelectorAll('.nav-title').forEach(nav => nav.classList.remove('active'));
-                item.querySelector('.nav-title').classList.add('active');
+      document.getElementById('reservationForm').addEventListener('submit', function (e) {
+        e.preventDefault();
 
-                // Hide all main content sections
-                document.querySelectorAll('.main-content.section').forEach(section => {
-                    section.style.display = 'none';
-                });
+        document.getElementById('reservationForm').style.display = 'none';
+        const confirmation = document.getElementById('confirmation');
+        confirmation.style.display = 'block';
 
-                // Show the selected section
-                if (target) {
-                    document.getElementById(target).style.display = 'block';
-                }
-            });
-        });
+        const details = document.getElementById('reservationDetails');
+        const memberList = Array.from(membersContainer.querySelectorAll('input[type="text"]'))
+          .map(input => `<li>${input.value}</li>`)
+          .join('');
 
-        // Tab switching inside Transactions
-        document.querySelectorAll('.tab-trigger').forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                // Deactivate all tabs
-                document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
-                trigger.classList.add('active');
-
-                // Hide all tab contents
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.style.display = 'none';
-                });
-
-                // Show selected tab
-                const tabId = trigger.textContent.toLowerCase() + '-tab';
-                document.getElementById(tabId).style.display = 'block';
-            });
-        });
-    </script>
+        details.innerHTML = `
+          <p><strong>Number of Members:</strong> ${numStudentsInput.value}</p>
+          <p><strong>Date:</strong> ${document.getElementById('reservationDate').value}</p>
+          <p><strong>Time:</strong> ${document.getElementById('reservationTime').value}</p>
+          <p><strong>Purpose:</strong> ${document.getElementById('purpose').value}</p>
+          <h3>Members:</h3>
+          <ul>${memberList}</ul>
+        `;
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
