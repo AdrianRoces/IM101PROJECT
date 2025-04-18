@@ -1,0 +1,427 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Libre Baskerville', serif;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.container {
+    width: 100%;
+    min-height: 100vh; /* let it grow with content */
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.header {
+    width: 99%;
+    height: 150px;
+    background-color: none;
+    position: fixed; /* <-- Make header fixed */
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    width: 100%;
+    position: relative;
+    z-index: 3; /* Increase z-index to appear above both diagonal elements */
+}
+
+.university-logo {
+    width: 90px;
+    height: 90px;
+    margin-left: 90px;
+    margin-top: 5px;
+}
+
+.university-info {
+    margin-bottom: 50px;
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+.university-name {
+    color: white;
+    font-size: 55px;
+    margin-left: 70px;
+    padding: 0;
+    font-weight: bold;
+}
+
+.campus-locations {
+    color: white;
+    font-size: 23px;
+    margin: 5px 0 0 160px;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;  /* Align elements vertically */
+    align-items: center;
+    margin-right: 30px;
+    justify-content: flex-start;  /* Align to the top */
+}
+
+.library-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;  /* Space between the logo and the text */
+    margin-right: 70px;
+}
+
+.library-hub {
+    color: #004e99;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 70px;
+}
+
+.diagonal-shadow-container1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+    z-index: -1; /* Lower z-index, so it appears below the white shape */
+}
+
+/* The diagonal shadow shape */
+.diagonal-shadow1 {
+    position: absolute;
+    right: 360px;
+    width: 1000px;
+    height: 110px;
+    background-color: #004e99;
+    transform: skew(-30deg);
+    transform-origin: top right;
+}
+
+.diagonal-shadow-container2 {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+    z-index: -2; /* Lower z-index, so it appears below the white shape */
+}
+
+/* The diagonal shadow shape */
+.diagonal-shadow2 {
+    position: absolute;
+    right: 345px;
+    width: 1020px;
+    height: 110px;
+    background-color: #147EE3;
+    transform: skew(-30deg);
+    transform-origin: top right;
+}
+
+
+
+.library-info {
+    margin-left: auto;
+    margin-right: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.library-text {
+    font-weight: bold;
+    color: #004e99;
+    font-size: 30px;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.library-logo {
+    width: 114px;
+    height: 114px;
+    margin-left: 16px;
+    object-fit: cover;
+}
+
+/* Enhanced Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 125px; /* Exactly matches header height */
+    left: 0;
+    width: 280px;
+    height: calc(100vh - 100px);
+    background-color: #004e99;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 99;
+    box-shadow: 4px 0 10px -3px rgba(0, 0, 0, 0.2); /* Right side shadow */
+}
+
+/* Sidebar Item */
+.nav-item {
+    width: 100%; /* Full width of sidebar */
+    height: 60px; /* Height of each item */
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+/* Active item indicator */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.nav-item:hover::before {
+    background-color: #147ee3; /* Lighter blue indicator */
+}
+
+.nav-icon {
+    width: 28px;  /* Slightly larger icon */
+    height: 28px;
+    margin-right: 20px;  /* More space between icon and text */
+    object-fit: contain;
+}
+
+.nav-title {
+    font-size: 18px; /* Larger text */
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Hover effects */
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
+}
+
+.nav-item:hover .nav-title {
+    transform: translateX(5px); /* Slight movement on hover */
+}
+
+/* Enhanced Active State Styles */
+.nav-item.active {
+    background-color: rgba(20, 126, 227, 0.2); /* Semi-transparent light blue */
+}
+
+.nav-item.active::before {
+    background-color: #147ee3; /* Solid blue indicator */
+    width: 6px; /* Slightly thicker active indicator */
+}
+
+.nav-item.active .nav-title {
+    color: #fff;
+    font-weight: 700; /* Bolder text */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Subtle glow */
+}
+
+.nav-item.active .nav-icon {
+    filter: brightness(1.2); /* Slightly brighter icon */
+    transform: scale(1.05); /* Slightly larger */
+}
+
+/* Specific active item styling for Transactions */
+.sidebar .nav-item:first-child {
+    background-color: rgba(20, 126, 227, 0.2);
+}
+
+.sidebar .nav-item:first-child::before {
+    background-color: #147ee3;
+    width: 6px;
+}
+
+.sidebar .nav-item:first-child .nav-title {
+    color: #fff;
+    font-weight: 700;
+}
+
+.sidebar .nav-item:first-child .nav-icon {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+/* Logout button at bottom */
+.sidebar .nav-item:last-child {
+    margin-top: auto;
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
+/* Optional: Add some subtle animation to icons */
+.nav-icon {
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+    transform: scale(1.1);
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-top: 150px; /* Push content below the fixed header */
+    margin-left: 280px; /* Push content right of fixed sidebar */
+    padding: 20px;
+    min-height: calc(100vh - 150px);
+    box-sizing: border-box;
+}
+
+.tabs-container {
+    width: 100%;
+}
+
+.tabs-list {
+    width: 364px;
+    height: 23px;
+    border-radius: 100px;
+    padding: 0;
+    display: flex;
+    background-color: #004e99;
+    overflow: hidden;
+}
+
+.tab-trigger {
+    width: 182px;
+    height: 100%;
+    border-radius: 100px;
+    background-color: #004e99;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab-trigger.active {
+    background-color: #147ee3;
+}
+
+.tab-content {
+    margin-top: 16px;
+}
+
+.card {
+    border: none;
+    box-shadow: none;
+}
+
+.card-content {
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead tr {
+    background-color: #004e99;
+    height: 80px;
+}
+
+th {
+    font-weight: bold;
+    color: white;
+    font-size: 12px;
+    text-align: left;
+    padding: 0 16px;
+}
+
+tbody tr {
+    height: 80px;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    font-weight: bold;
+    color: black;
+    font-size: 12px;
+    padding: 0 16px;
+    /* Room transaction and room reservations css*/
+}
+#room-tab table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  #room-tab thead {
+    background-color: #004A94;
+    color: white;
+  }
+  
+  #room-tab th, #room-tab td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  #room-tab td:nth-child(6) {
+    text-align: left;
+    white-space: pre-line;
+  }
+  
+  #room-tab th {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  #room-tab td i {
+    font-style: italic;
+  }
+  
+  #room-tab td:last-child {
+    color: #004A94;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .edit-btn, .cancel-btn {
+    padding: 5px 10px;
+    margin: 2px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .cancel-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
