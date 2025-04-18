@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Transactions</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <img src="images/Qcu logo.png" alt="QCU Logo" class="university-logo">
+            <div class="university-info">
+                <h1 class="university-name">Quezon City University</h1>
+                <p class="campus-locations">San Bartolome | San Francisco | Batasan</p>
+            </div>
+            <div class="right-section">
+                <img src="images/library.jpg" alt="Library Icon" class="library-icon">
+                <div class="library-hub">Library Hub</div>
+            </div>
+        </div>
+        <div class="diagonal-shape"></div>
+            <div class="diagonal-shadow-container1">
+                <div class="diagonal-shadow1"></div>
+            </div>
+        <div class="diagonal-shadow-container2">
+            <div class="diagonal-shadow2"></div>
+        </div>
+    </div>
+    <div class="register-container">
+        <h2>LOGIN</h2>
+        <div class="name-row">
+          </div>
+      
+          <div class="student-course-row">
+            <input type="text" placeholder="Student Number">
+          </div>
+          <form onsubmit="redirectToLanding(event)">
+            <button type="submit" class="btn">LOGIN</button>
+          </form>
+          
+          <script>
+            function redirectToLanding(event) {
+              event.preventDefault(); // stop form from submitting the usual way
+              window.location.href = 'landingpage.html'; // redirect to landing page
+            }
+          </script>
+          
+        <p class="login-link">
+          Don't have an account? <a href="register.html">SIGN UP</a>
+        </p>
+        
+        
+      </div>
+      </body>
+
+
+
