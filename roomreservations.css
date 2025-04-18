@@ -251,25 +251,6 @@ body {
     transform: scale(1.05); /* Slightly larger */
 }
 
-/* Specific active item styling for Transactions */
-.sidebar .nav-item:first-child {
-    background-color: rgba(20, 126, 227, 0.2);
-}
-
-.sidebar .nav-item:first-child::before {
-    background-color: #147ee3;
-    width: 6px;
-}
-
-.sidebar .nav-item:first-child .nav-title {
-    color: #fff;
-    font-weight: 700;
-}
-
-.sidebar .nav-item:first-child .nav-icon {
-    filter: brightness(1.2);
-    transform: scale(1.05);
-}
 
 /* Logout button at bottom */
 .sidebar .nav-item:last-child {
