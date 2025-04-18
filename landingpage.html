@@ -75,15 +75,20 @@
                     <th>BOOK DETAILS</th>
                     <th>BORROW DATE</th>
                     <th>DUE DATE</th>
+                    <th>FINE</th>
                     <th>STATUS</th>
                     <th>ACTION</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>MATERNAL</td>
                     <td>08/23/2024</td>
-                    <td>08/23/2025</td>
+                    <td>4/17/2025</td>
+                    <td>
+                      <button class="violation-btn bg-red-600 text-white px-2 py-1 rounded">View</button>
+                    </td>
                     <td>APPROVED</td>
                     <td>IN USE</td>
                   </tr>
@@ -92,6 +97,14 @@
             </div>
           </div>
         </div>
+<!-- Modal -->
+<div id="violationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50">
+  <div class="bg-white p-6 rounded-lg w-96 shadow-xl text-center">
+    <h2 class="text-2xl font-semibold mb-4 text-red-700">Violation Notice</h2>
+    <p id="violationText" class="mb-4 text-gray-800"></p>
+    <button id="closeModalBtn" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Close</button>
+  </div>
+</div>
 
         <div class="tab-content" id="room-tab" style="display: none;">
           <div class="card">
@@ -179,5 +192,46 @@
       `;
     });
   </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const penaltyPerDay = 5;
+    const modal = document.getElementById("violationModal");
+    const violationText = document.getElementById("violationText");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    document.querySelectorAll("tbody tr").forEach(row => {
+      const dueDateText = row.cells[2].textContent;
+      const dueDate = new Date(dueDateText);
+      const today = new Date();
+      const violationBtn = row.querySelector('.violation-btn');
+
+      violationBtn.addEventListener("click", () => {
+        if (today > dueDate) {
+          const msInDay = 1000 * 60 * 60 * 24;
+          const daysLate = Math.floor((today - dueDate) / msInDay);
+          const fine = daysLate * penaltyPerDay;
+
+          violationText.innerHTML = `
+            <strong>This book is overdue by ${daysLate} day(s).</strong><br>
+            You have a penalty of <span class="text-red-600 font-bold">₱${fine}</span>.
+          `;
+        } else {
+          violationText.innerHTML = `
+            <span class="text-green-600 font-semibold">No violations. You're all good! ✅</span>
+          `;
+        }
+
+        modal.classList.remove("hidden");
+      });
+    });
+
+    closeModalBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+  });
+</script>
+
+
 </body>
 </html>
