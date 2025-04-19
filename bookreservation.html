@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Book Reservation</title>
-  <link rel="stylesheet" href="landingpage.css"/>
+  <link rel="stylesheet" href="studentlandingpage.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
   <style>
@@ -12,19 +12,30 @@
     body {
       font-family: 'Roboto Slab', serif;
     }
+
+    .category-btn.active {
+      background-color: #003366; 
+    }
+
+    /* Move campus text a little higher */
+    .campus-locations {
+      margin-top: -10px;
+      font-size: 20px;
+      color: white;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900">
   <!-- Header -->
   <div class="header">
     <div class="header-content">
-      <img src="images/Qcu logo.png" alt="QCU Logo" class="university-logo">
+      <img src="pictures/Qcu logo.png" alt="QCU Logo" class="university-logo">
       <div class="university-info">
         <h1 class="university-name">Quezon City University</h1>
         <p class="campus-locations">San Bartolome | San Francisco | Batasan</p>
       </div>
       <div class="right-section">
-        <img src="images/library.jpg" alt="Library Icon" class="library-icon">
+        <img src="pictures/library.jpg" alt="Library Icon" class="library-icon">
         <div class="library-hub">Library Hub</div>
       </div>
     </div>
@@ -39,28 +50,29 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <div class="nav-item" onclick="window.location.href='landingpage.html'">
-      <img class="nav-icon" src="images/transaction.png" alt="Transactions">
+    <div class="nav-item" onclick="window.location.href='studentlandingpage.html'">
+      <img class="nav-icon" src="pictures/transaction.png" alt="Transactions">
       <div class="nav-title">TRANSACTIONS</div>
     </div>
     <div class="nav-item" onclick="window.location.href='bookreservation.html'">
-      <img class="nav-icon" src="images/bookresrv.png" alt="Book Request">
+      <img class="nav-icon" src="pictures/bookresrv.png" alt="Book Request">
       <div class="nav-title active">BOOK REQUEST</div>
     </div>
     <div class="nav-item" onclick="window.location.href='roomreservation.html'">
-      <img class="nav-icon" src="images/roomresrv.png" alt="Room Reservations">
+      <img class="nav-icon" src="pictures/roomresrv.png" alt="Room Reservations">
       <div class="nav-title">ROOM RESERVATIONS</div>
     </div>
     <div class="nav-item" onclick="window.location.href='dashboard.html'">
-      <img class="nav-icon" src="images/logout.png" alt="Logout">
+      <img class="nav-icon" src="pictures/logout.png" alt="Logout">
       <div class="nav-title">LOGOUT</div>
     </div>
   </div>
 
-  <!-- Book Gallery Content (Main View) -->
+  <!-- Main Content -->
   <div class="main-content">
     <div id="main-view">
       <div class="max-w-[1200px] mx-auto p-8">
+        <!-- Search Bar -->
         <form class="mb-10">
           <div class="flex items-center bg-[#004080] rounded-full max-w-lg mx-auto shadow-lg overflow-hidden">
             <input
@@ -73,34 +85,72 @@
             </button>
           </div>
         </form>
-        <div class="grid grid-cols-4 gap-10">
-          <div class="flex justify-center hover:scale-105 transition-transform">
-            <img src="https://placehold.co/120x180/000080/ffffff?text=Computer+Programming+Book+1" alt="Book 1" class="w-32" />
+
+        <div class="flex justify-center gap-4 mb-8 flex-wrap">
+            <button class="category-btn w-40 text-center px-4 py-2 bg-blue-800 text-white rounded-full" data-category="all">All</button>
+            <button class="category-btn w-40 text-center px-4 py-2 bg-blue-600 text-white rounded-full" data-category="batasan">Batasan</button>
+            <button class="category-btn w-40 text-center px-4 py-2 bg-blue-600 text-white rounded-full" data-category="sanfrancisco">San Francisco</button>
+            <button class="category-btn w-40 text-center px-4 py-2 bg-blue-600 text-white rounded-full" data-category="sanbartolome">San Bartolome</button>
           </div>
-          <div class="flex justify-center hover:scale-105 transition-transform">
-            <img src="https://placehold.co/120x180/004d40/ffffff?text=Computer+Programming+Book+2" alt="Book 2" class="w-32" />
-          </div>
-          <div class="flex justify-center hover:scale-105 transition-transform">
-            <img src="https://placehold.co/120x180/000000/ffff00?text=Python+Programming+SQL" alt="Book 3" class="w-32" />
-          </div>
-          <div class="flex justify-center hover:scale-105 transition-transform">
-            <img src="https://placehold.co/120x180/003366/ffffff?text=Computer+Programming+Book+4" alt="Book 4" class="w-32" />
-          </div>
-          <div class="flex justify-center hover:scale-105 transition-transform">
-            <img src="https://placehold.co/120x180/336600/ffff00?text=Computer+Programming+Fundamentals" alt="Book 5" class="w-32" />
-          </div>
-          <div class="flex justify-center hover:scale-105 transition-transform">
-            <img src="https://placehold.co/120x180/003399/ffffff?text=Computer+Programming+Book+6" alt="Book 6" class="w-32" />
-          </div>
-          <div class="flex justify-center hover:scale-105 transition-transform">
-            <img src="https://placehold.co/120x180/f5f5dc/000000?text=The+Art+of+Computer+Programming" alt="Book 7" class="w-32" />
-          </div>
-          <div class="flex justify-center hover:scale-105 transition-transform">
-            <img src="https://placehold.co/120x180/000000/ffff00?text=Python+Programming+for+Beginners" alt="Book 8" class="w-32" />
-          </div>
+          
+        <!-- Book Cards -->
+        <div class="grid grid-cols-4 gap-10" id="book-gallery">
+          <!-- Batasan -->
+          <div class="book-card" data-category="batasan"><img src="https://placehold.co/120x180/000080/ffffff?text=Programming+1" class="w-32" /></div>
+          <div class="book-card" data-category="batasan"><img src="https://placehold.co/120x180/111188/ffffff?text=Algorithms" class="w-32" /></div>
+          <div class="book-card" data-category="batasan"><img src="https://placehold.co/120x180/222299/ffffff?text=Intro+to+Coding" class="w-32" /></div>
+          <div class="book-card" data-category="batasan"><img src="https://placehold.co/120x180/3333aa/ffffff?text=Software+Engg" class="w-32" /></div>
+
+          <!-- San Francisco -->
+          <div class="book-card" data-category="sanfrancisco"><img src="https://placehold.co/120x180/004d40/ffffff?text=Python+101" class="w-32" /></div>
+          <div class="book-card" data-category="sanfrancisco"><img src="https://placehold.co/120x180/005555/ffffff?text=Web+Dev" class="w-32" /></div>
+          <div class="book-card" data-category="sanfrancisco"><img src="https://placehold.co/120x180/006666/ffffff?text=HTML+Intro" class="w-32" /></div>
+          <div class="book-card" data-category="sanfrancisco"><img src="https://placehold.co/120x180/007777/ffffff?text=CSS+Design" class="w-32" /></div>
+
+          <!-- San Bartolome -->
+          <div class="book-card" data-category="sanbartolome"><img src="https://placehold.co/120x180/000000/ffff00?text=SQL+Basics" class="w-32" /></div>
+          <div class="book-card" data-category="sanbartolome"><img src="https://placehold.co/120x180/111111/ffffff?text=Data+Structs" class="w-32" /></div>
+          <div class="book-card" data-category="sanbartolome"><img src="https://placehold.co/120x180/222222/ffffff?text=Database+Design" class="w-32" /></div>
+          <div class="book-card" data-category="sanbartolome"><img src="https://placehold.co/120x180/333333/ffffff?text=Cloud+Comp" class="w-32" /></div>
+
+          <!-- Extras -->
+          <div class="book-card" data-category="batasan"><img src="https://placehold.co/120x180/004080/ffffff?text=Tech+Trends" class="w-32" /></div>
+          <div class="book-card" data-category="sanfrancisco"><img src="https://placehold.co/120x180/004080/ffffff?text=AI+Intro" class="w-32" /></div>
+          <div class="book-card" data-category="sanbartolome"><img src="https://placehold.co/120x180/004080/ffffff?text=Ethical+Hacking" class="w-32" /></div>
+          <div class="book-card" data-category="batasan"><img src="https://placehold.co/120x180/004080/ffffff?text=Tech+Writing" class="w-32" /></div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Filtering Script -->
+  <script>
+    // Get all category buttons
+    const categoryButtons = document.querySelectorAll('.category-btn');
+
+    // Add event listener to each button
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to the clicked button
+        this.classList.add('active');
+        
+        const category = this.getAttribute('data-category');
+        filterBooks(category);
+      });
+    });
+
+    function filterBooks(category) {
+      const cards = document.querySelectorAll('.book-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
