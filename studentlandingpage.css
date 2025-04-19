@@ -1,32 +1,34 @@
+
+
 *{
 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Libre Baskerville', serif;
-}
-
-body {
+  }
+  
+  body {
     background-color: white;
     margin: 0;
     padding: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-
-
-
-.container {
+  }
+  
+  
+  
+  .container {
     width: 100%;
     min-height: 100vh; /* let it grow with content */
     position: relative;
     overflow: hidden;
-}
-
-
-
-.header {
+  }
+  
+  
+  
+  .header {
     width: 99%;
     height: 150px;
     background-color: none;
@@ -36,66 +38,66 @@ body {
     z-index: 100;
     display: flex;
     align-items: center;
-}
-
-.header-content {
+  }
+  
+  .header-content {
     display: flex;
     width: 100%;
     position: relative;
     z-index: 3; /* Increase z-index to appear above both diagonal elements */
-}
-
-.university-logo {
+  }
+  
+  .university-logo {
     width: 90px;
     height: 90px;
     margin-left: 90px;
     margin-top: 5px;
-}
-
-.university-info {
+  }
+  
+  .university-info {
     margin-bottom: 50px;
     margin-left: 20px;
     flex-grow: 1;
-}
-
-.university-name {
+  }
+  
+  .university-name {
     color: white;
     font-size: 55px;
     margin-left: 70px;
     padding: 0;
     font-weight: bold;
-}
-
-.campus-locations {
+  }
+  
+  .campus-locations {
     color: white;
     font-size: 23px;
     margin: 5px 0 0 160px;
-}
-
-.right-section {
+  }
+  
+  .right-section {
     display: flex;
     flex-direction: column;  /* Align elements vertically */
     align-items: center;
     margin-right: 30px;
     justify-content: flex-start;  /* Align to the top */
-}
-
-.library-icon {
+  }
+  
+  .library-icon {
     width: 80px;
     height: 80px;
     margin-bottom: 10px;  /* Space between the logo and the text */
     margin-right: 70px;
-}
-
-.library-hub {
+  }
+  
+  .library-hub {
     color: #004e99;
     font-size: 24px;
     font-weight: bold;
     text-align: center;
     margin-right: 70px;
-}
-
-.diagonal-shadow-container1 {
+  }
+  
+  .diagonal-shadow-container1 {
     position: absolute;
     top: 0;
     right: 0;
@@ -103,20 +105,20 @@ body {
     height: 110px;
     overflow: hidden;
     z-index: -1; /* Lower z-index, so it appears below the white shape */
-}
-
-/* The diagonal shadow shape */
-.diagonal-shadow1 {
+  }
+  
+  /* The diagonal shadow shape */
+  .diagonal-shadow1 {
     position: absolute;
     right: 360px;
-    width: 1000px;
+    width: 100%;
     height: 110px;
     background-color: #004e99;
     transform: skew(-30deg);
     transform-origin: top right;
-}
-
-.diagonal-shadow-container2 {
+  }
+  
+  .diagonal-shadow-container2 {
     position: absolute;
     top: 15px;
     right: 0;
@@ -124,43 +126,42 @@ body {
     height: 110px;
     overflow: hidden;
     z-index: -2; /* Lower z-index, so it appears below the white shape */
-}
-
-/* The diagonal shadow shape */
-.diagonal-shadow2 {
+  }
+  
+  /* The diagonal shadow shape */
+  .diagonal-shadow2 {
     position: absolute;
     right: 345px;
-    width: 1020px;
+    width: 100%;
     height: 110px;
     background-color: #147EE3;
     transform: skew(-30deg);
     transform-origin: top right;
-}
-
-
-
-.library-info {
+  }
+  
+  
+  
+  .library-info {
     margin-left: auto;
     margin-right: 80px;
     display: flex;
     align-items: center;
-}
-
-.library-text {
+  }
+  
+  .library-text {
     font-weight: bold;
     color: #004e99;
     font-size: 30px;
     background-color: white;
     padding: 5px 10px;
     border-radius: 5px;
-}
-
-.library-logo {
+  }
+  
+  .library-logo {
     width: 114px;
     height: 114px;
     margin-left: 16px;
-    object-fit: cover;
-}
+    object-fit: cover;}
 
 /* Enhanced Sidebar Styles */
 .sidebar {
@@ -368,6 +369,3 @@ td {
     font-size: 12px;
     padding: 0 16px;
 }
-
-
-
