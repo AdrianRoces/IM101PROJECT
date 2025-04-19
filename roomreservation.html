@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Library Transactions</title>
-  <link rel="stylesheet" href="roomreservations.css"/>
+  <link rel="stylesheet" href="roomreservation.css"/>
 </head>
 <body>
   <div class="header">
     <div class="header-content">
-      <img src="Qcu logo.png" alt="QCU Logo" class="university-logo" />
+      <img src="pictures/Qcu logo.png" alt="QCU Logo" class="university-logo" />
       <div class="university-info">
         <h1 class="university-name">Quezon City University</h1>
         <p class="campus-locations">San Bartolome | San Francisco | Batasan</p>
       </div>
       <div class="right-section">
-        <img src="library.jpg" alt="Library Icon" class="library-icon" />
+        <img src="pictures/library.jpg" alt="Library Icon" class="library-icon" />
         <div class="library-hub">Library Hub</div>
       </div>
     </div>
@@ -30,23 +30,23 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <div class="nav-item">
-      <img class="nav-icon" src="transaction.png" alt="Transactions" />
-      <div class="nav-title">TRANSACTIONS</div>
+    <div class="nav-item" onclick="window.location.href='landingpage.html'">
+        <img class="nav-icon" src="pictures/transaction.png" alt="Transactions">
+        <div class="nav-title active">TRANSACTIONS</div>
     </div>
-    <div class="nav-item">
-      <img class="nav-icon" src="bookreq.png" alt="Book Request" />
-      <div class="nav-title">BOOK REQUEST</div>
+    <div class="nav-item" onclick="window.location.href='bookreservation.html'">
+        <img class="nav-icon" src="pictures/bookresrv.png" alt="Book Request">
+        <div class="nav-title">BOOK REQUEST</div>
     </div>
-    <div class="nav-item active">
-      <img class="nav-icon" src="roomresrv.png" alt="Room Reservations" />
-      <div class="nav-title">ROOM RESERVATIONS</div>
+    <div class="nav-item" onclick="window.location.href='roomreservation.html'">
+        <img class="nav-icon" src="pictures/roomresrv.png" alt="Room Reservations">
+        <div class="nav-title">ROOM RESERVATIONS</div>
     </div>
-    <div class="nav-item">
-      <img class="nav-icon" src="logout.png" alt="Logout" />
-      <div class="nav-title">LOGOUT</div>
+    <div class="nav-item" onclick="window.location.href='dashboard.html'">
+        <img class="nav-icon" src="pictures/logout.png" alt="Logout">
+        <div class="nav-title">LOGOUT</div>
     </div>
-  </div>
+</div>
 
   <!-- Main Content -->
   <div class="main-content section" id="roomreservations-section" style="display: block;">
@@ -89,7 +89,7 @@
             <label for="purpose">Purpose:</label>
             <textarea id="purpose" name="purpose" required></textarea>
           </div>
-
+          
           <div class="consent-check">
             <input type="checkbox" id="privacyConsent" name="privacyConsent" required />
             <label for="privacyConsent">
