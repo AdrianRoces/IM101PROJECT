@@ -1,0 +1,266 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Libre Baskerville', serif;
+  }
+  
+  body {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Header styles */
+  .header {
+    width: 100%;
+    height: 130px;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
+    z-index: 0;
+  }
+  
+  .university-logo {
+    width: 90px;
+    height: 90px;
+    position: relative;
+    z-index: 10;
+    margin-right: 20px;
+  }
+  
+  .university-info {
+    flex-grow: 1;
+    padding-left: 20px;
+  }
+  
+  .university-name {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    z-index: 10;
+    position: relative;
+
+  }
+  
+  .right-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .library-icon {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+  }
+  
+  /* Diagonal design layers */
+  .diagonal-shape {
+    position: absolute;
+    top: 0;
+    right: 500px;
+    width: 2000px;
+    height: 130px;
+    background-color: #004e99;
+    transform: skew(-30deg);
+    transform-origin: top right;
+    z-index: -1;
+  }
+  .diagonal-shadow-container1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 130px;
+    overflow: hidden;
+  }
+  .diagonal-shadow-container2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+  }
+  
+  .diagonal-shadow1 {
+    position: absolute;
+    right: 360px;
+    width: 1000px;
+    height: 130px;
+    background-color: #004e99;
+    transform: skew(-30deg);
+    transform-origin: top right;
+    z-index: -1;
+  }
+  
+  .diagonal-shadow2 {
+    position: absolute;
+    top: 0; /* Ensure it starts at the top */
+    right: 345px;
+    width: 1020px;
+    height: 300px;
+    background-color: #147EE3;
+    transform: skew(-30deg);
+    transform-origin: top right;
+    z-index: -2;
+}
+
+  
+  .diagonal-shadow3 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 75px;
+    background-color: #004e99;
+    z-index: -0;
+  }
+
+/* Enhanced Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 150px; /* Exactly matches header height */
+    left: 0;
+    width: 280px;
+    height: calc(100vh - 100px);
+    background-color: #004e99;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 99;
+    box-shadow: 4px 0 10px -3px rgba(0, 0, 0, 0.2); /* Right side shadow */
+}
+
+/* Sidebar Item */
+.nav-item {
+    width: 100%; /* Full width of sidebar */
+    height: 60px; /* Height of each item */
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+/* Active item indicator */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.nav-item:hover::before {
+    background-color: #147ee3; /* Lighter blue indicator */
+}
+
+.nav-icon {
+    width: 28px;  /* Slightly larger icon */
+    height: 28px;
+    margin-right: 20px;  /* More space between icon and text */
+    object-fit: contain;
+}
+
+.nav-title {
+    font-size: 18px; /* Larger text */
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Hover effects */
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
+}
+
+.nav-item:hover .nav-title {
+    transform: translateX(5px); /* Slight movement on hover */
+}
+
+/* Enhanced Active State Styles */
+.nav-item.active {
+    background-color: rgba(20, 126, 227, 0.2); /* Semi-transparent light blue */
+}
+
+.nav-item.active::before {
+    background-color: #147ee3; /* Solid blue indicator */
+    width: 6px; /* Slightly thicker active indicator */
+}
+
+.nav-item.active .nav-title {
+    color: #fff;
+    font-weight: 700; /* Bolder text */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Subtle glow */
+}
+
+.nav-item.active .nav-icon {
+    filter: brightness(1.2); /* Slightly brighter icon */
+    transform: scale(1.05); /* Slightly larger */
+}
+
+/* Specific active item styling for Transactions */
+.sidebar .nav-item:first-child {
+    background-color: rgba(20, 126, 227, 0.2);
+}
+
+.sidebar .nav-item:first-child::before {
+    background-color: #147ee3;
+    width: 6px;
+}
+
+.sidebar .nav-item:first-child .nav-title {
+    color: #fff;
+    font-weight: 700;
+}
+
+.sidebar .nav-item:first-child .nav-icon {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+/* Logout button at bottom */
+.sidebar .nav-item:last-child {
+    margin-top: auto;
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
+/* Optional: Add some subtle animation to icons */
+.nav-icon {
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+    transform: scale(1.1);
+}
