@@ -1,0 +1,588 @@
+:root {
+  --maroon-50: #fbf0f0;
+  --maroon-100: #f5d7d7;
+  --maroon-200: #ebb8b8;
+  --maroon-300: #db9090;
+  --maroon-400: #c76767;
+  --maroon-500: #b74747;
+  --maroon-600: #a23636;
+  --maroon-700: #8b2323;
+  --maroon-800: #701717;
+  --maroon-900: #580e0e;
+  --gold-500: #edb304;
+  --gold-300: #fdd646;
+  --blue-primary: #004e99;
+  --blue-secondary: #147ee3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Libre Baskerville', serif;
+}
+
+body {
+  background-color: white;
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* Header styles */
+.header {
+  width: 100%;
+  height: 130px;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 40px;
+  position: relative;
+}
+
+.university-logo {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  z-index: 10;
+  margin-right: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.university-info {
+  flex-grow: 1;
+  padding-left: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.university-name {
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.campus-names {
+  color: white;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+/* Diagonal design layers */
+.diagonal-shape {
+  position: absolute;
+  top: 0;
+  right: 500px;
+  width: 2000px;
+  height: 130px;
+  background-color: var(--blue-primary);
+  transform: skew(-30deg);
+  transform-origin: top right;
+  z-index: -1;
+}
+
+.diagonal-shadow-container1,
+.diagonal-shadow-container2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+}
+
+.diagonal-shadow-container2 {
+  height: 150px;
+}
+
+.diagonal-shadow1 {
+  position: absolute;
+  right: 360px;
+  width: 1000px;
+  height: 130px;
+  background-color: var(--blue-primary);
+  transform: skew(-30deg);
+  transform-origin: top right;
+  z-index: -1;
+}
+
+.diagonal-shadow2 {
+  position: absolute;
+  top: 0;
+  right: 345px;
+  width: 1020px;
+  height: 300px;
+  background-color: var(--blue-secondary);
+  transform: skew(-30deg);
+  transform-origin: top right;
+  z-index: -2;
+}
+
+.diagonal-shadow3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 75px;
+  background-color: var(--blue-primary);
+  z-index: -3;
+}
+
+/* Enhanced Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 150px;
+  left: 0;
+  width: 280px;
+  height: calc(100vh - 150px);
+  background-color: var(--blue-primary);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 99;
+  box-shadow: 4px 0 10px -3px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.nav-item:hover::before {
+  background-color: var(--blue-secondary);
+}
+
+.nav-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 20px;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item:hover .nav-title {
+  transform: translateX(5px);
+}
+
+.nav-item.active {
+  background-color: rgba(20, 126, 227, 0.2);
+}
+
+.nav-item.active::before {
+  background-color: var(--blue-secondary);
+  width: 6px;
+}
+
+.nav-item.active .nav-title {
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.nav-item.active .nav-icon {
+  filter: brightness(1.2);
+  transform: scale(1.05);
+}
+
+/* Main content area */
+.main-content {
+  margin-left: 280px;
+  margin-top: 150px;
+  padding: 30px;
+  flex: 1;
+  background-color: #f8f9fa;
+}
+
+.content-header h1 {
+  color: var(--blue-primary);
+  font-size: 32px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--blue-primary);
+  padding-bottom: 10px;
+}
+
+/* Card container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+  color: var(--blue-primary);
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.card-button {
+  width: 100%;
+  background-color: var(--blue-primary);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: var(--blue-secondary);
+  transform: translateY(-2px);
+}
+
+/* Table Styles */
+.reservation-table-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.reservation-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reservation-table th {
+  background-color: var(--blue-primary);
+  color: white;
+  padding: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.reservation-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.reservation-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Status and Action Buttons */
+.status-pending {
+  color: #ffa500;
+  font-weight: 600;
+}
+
+.status-approved {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.status-rejected {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.action-btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.approve-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.approve-btn:hover {
+  background-color: #218838;
+}
+
+.reject-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.reject-btn:hover {
+  background-color: #c82333;
+}
+
+.edit-btn {
+  background-color: var(--blue-secondary);
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: var(--blue-primary);
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  color: var(--blue-primary);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #eee;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--blue-secondary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(20, 126, 227, 0.1);
+}
+
+/* Number Input */
+.number-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.number-input button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--blue-primary);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number-input button:hover {
+  background-color: var(--blue-secondary);
+  transform: scale(1.1);
+}
+
+.number-input input {
+  width: 80px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Form Actions */
+.form-actions {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  border-top: 1px solid #eee;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--blue-primary);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--blue-secondary);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+/* Utilities */
+.hidden {
+  display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 240px;
+  }
+
+  .main-content {
+    margin-left: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: auto;
+    position: relative;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .university-name {
+    font-size: 24px;
+  }
+
+  .campus-names {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 0 20px;
+  }
+
+  .university-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .modal-content {
+    margin: 10px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

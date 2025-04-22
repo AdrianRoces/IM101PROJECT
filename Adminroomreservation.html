@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Hub - Room Reservations</title>
+    <link rel="stylesheet" href="prac.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="nav-item">
+          <img
+            src="https://api.iconify.design/lucide/layout-dashboard.svg"
+            alt="Dashboard"
+            class="nav-icon"
+          />
+          <div class="nav-title">DASHBOARD</div>
+        </div>
+        <div class="nav-item">
+          <img
+            src="https://api.iconify.design/lucide/users.svg"
+            alt="Users"
+            class="nav-icon"
+          />
+          <div class="nav-title">MANAGE USERS</div>
+        </div>
+        <div class="nav-item">
+          <img
+            src="https://api.iconify.design/lucide/book-open.svg"
+            alt="Book"
+            class="nav-icon"
+          />
+          <div class="nav-title">BOOK REQUEST</div>
+        </div>
+        <div class="nav-item active">
+          <img
+            src="https://api.iconify.design/lucide/calendar.svg"
+            alt="Calendar"
+            class="nav-icon"
+          />
+          <div class="nav-title">ROOM RESERVE REQUEST</div>
+        </div>
+        <div class="nav-item">
+          <img
+            src="https://api.iconify.design/lucide/bar-chart-2.svg"
+            alt="Reports"
+            class="nav-icon"
+          />
+          <div class="nav-title">REPORTS</div>
+        </div>
+        <div class="nav-item">
+          <img
+            src="https://api.iconify.design/lucide/log-out.svg"
+            alt="Logout"
+            class="nav-icon"
+          />
+          <div class="nav-title">LOGOUT</div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+          <div class="university-info">
+            <div class="logo">
+              <img
+                src="https://api.iconify.design/lucide/library.svg"
+                alt="Library"
+                class="logo-icon"
+              />
+            </div>
+            <div>
+              <h1>Quezon City University</h1>
+              <p>San Bartolome | San Francisco | Batasan</p>
+            </div>
+          </div>
+          <h1 class="app-title">Library Hub</h1>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="dashboard" id="dashboard">
+          <h2>Room Reservation Dashboard</h2>
+          <div class="cards">
+            <div class="card">
+              <div class="card-header">
+                <img
+                  src="https://api.iconify.design/lucide/calendar.svg"
+                  alt="Calendar"
+                  class="card-icon"
+                />
+                <h3>Room Reservations</h3>
+              </div>
+              <button class="btn" onclick="viewCalendar()">
+                View Calendar
+              </button>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <img
+                  src="https://api.iconify.design/lucide/table.svg"
+                  alt="Table"
+                  class="card-icon"
+                />
+                <h3>Reservations Table</h3>
+              </div>
+              <button class="btn" onclick="viewTable()">View Table</button>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <img
+                  src="https://api.iconify.design/lucide/plus-circle.svg"
+                  alt="Add"
+                  class="card-icon"
+                />
+                <h3>Add Walk-in Reservations</h3>
+              </div>
+              <button class="btn" onclick="openWalkInForm()">Open Form</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reservation Table -->
+        <div class="reservation-table hidden" id="reservationTable">
+          <button class="back-btn" onclick="backToDashboard()">
+            ← Back to Dashboard
+          </button>
+          <h2>Reservation Requests</h2>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time Slot</th>
+                  <th>Room Name</th>
+                  <th>Reserved By</th>
+                  <th>Number of People</th>
+                  <th>Status</th>
+                  <th>Notification Sent</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="reservationTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Walk-in Reservation Form Modal -->
+        <div class="modal hidden" id="walkInFormModal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>ADD WALK IN RESERVATIONS</h2>
+              <button class="close-btn" onclick="closeWalkInForm()">×</button>
+            </div>
+            <form id="walkInForm" onsubmit="handleWalkInSubmit(event)">
+              <div class="form-group">
+                <label>Room:</label>
+                <select name="roomName" required>
+                  <option value="Meeting Room 1">Meeting Room 1</option>
+                  <option value="Meeting Room 2">Meeting Room 2</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Date:</label>
+                <input type="date" name="date" required />
+              </div>
+
+              <div class="form-group">
+                <label>Time Slot:</label>
+                <select name="timeSlot" required>
+                  <option value="9:00-10:00 AM">9:00-10:00 AM</option>
+                  <option value="10:00-11:00 AM">10:00-11:00 AM</option>
+                  <option value="11:00-12:00 PM">11:00-12:00 PM</option>
+                  <option value="1:00-2:00 PM">1:00-2:00 PM</option>
+                  <option value="2:00-3:00 PM">2:00-3:00 PM</option>
+                  <option value="3:00-4:00 PM">3:00-4:00 PM</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Reserved By:</label>
+                <input
+                  type="text"
+                  name="reservedBy"
+                  required
+                  placeholder="Enter name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Number of People:</label>
+                <div class="number-input">
+                  <button type="button" onclick="decrementPeople()">-</button>
+                  <input
+                    type="number"
+                    name="numberOfPeople"
+                    value="5"
+                    min="5"
+                    max="10"
+                    required
+                  />
+                  <button type="button" onclick="incrementPeople()">+</button>
+                </div>
+                <div class="help-text">Min: 5, Max: 10</div>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn-secondary"
+                  onclick="closeWalkInForm()"
+                >
+                  Cancel
+                </button>
+                <button type="submit" class="btn">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="Adminroomreservation.js"></script>
+  </body>
+</html>
