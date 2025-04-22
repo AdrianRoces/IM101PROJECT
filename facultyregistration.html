@@ -3,67 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Library Transactions</title>
+  <title>Faculty Registration</title>
   <link rel="stylesheet" href="studentregister.css"/>
+  <!-- SweetAlert2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.8/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+<body>
+
 <div class="header">
-    <div class="header-content">
-      <img src="pictures/Qcu logo.png" alt="QCU Logo" class="university-logo" />
-      <div class="university-info">
-        <h1 class="university-name">Quezon City University</h1>
-        <p class="campus-locations">San Bartolome | San Francisco | Batasan</p>
-      </div>
-      <div class="right-section">
-        <img src="pictures/library.jpg" alt="Library Icon" class="library-icon" />
-        <div class="library-hub">Library Hub</div>
-      </div>
+  <div class="header-content">
+    <img src="pictures/Qcu logo.png" alt="QCU Logo" class="university-logo" />
+    <div class="university-info">
+      <h1 class="university-name">Quezon City University</h1>
+      <p class="campus-locations">San Bartolome | San Francisco | Batasan</p>
     </div>
-    <div class="diagonal-shape"></div>
-    <div class="diagonal-shadow-container1">
-      <div class="diagonal-shadow1"></div>
-    </div>
-    <div class="diagonal-shadow-container2">
-      <div class="diagonal-shadow2"></div>
+    <div class="right-section">
+      <img src="pictures/library.jpg" alt="Library Icon" class="library-icon" />
+      <div class="library-hub">Library Hub</div>
     </div>
   </div>
+  <div class="diagonal-shape"></div>
+  <div class="diagonal-shadow-container1">
+    <div class="diagonal-shadow1"></div>
+  </div>
+  <div class="diagonal-shadow-container2">
+    <div class="diagonal-shadow2"></div>
+  </div>
+</div>
 
-<body>
-  
-    <div class="register-container">
-        <h2>REGISTER</h2>
-        <div class="name-row">
-            <input type="text" placeholder="First Name">
-            <input type="text" placeholder="Last Name">
-          </div>
-      
-          <div class="student-course-row">
-            <input type="text" placeholder="ID Number">
-            <input type="text" placeholder="Password">
-            <input type="text" list="departments" placeholder="Department">
-                <datalist id="departments">
-                 <option value="Computer Studies">
-                 <option value="College of Engineering">
-                <option value="College of Education">
-                <option value="College of Entrepreneurship">
-                <option value="College of Business Administration and Accountancy">
+<div class="register-container">
+  <h2>FACULTY REGISTER</h2>
 
-</datalist>
+  <form id="facultyForm">
+    <div class="name-row">
+      <input type="text" name="firstName" placeholder="First Name" required>
+      <input type="text" name="lastName" placeholder="Last Name" required>
+    </div>
 
-          </div>
-        <form>
-          
-            <form onsubmit="redirectToLanding(event)">
-                <button type="submit" class="btn">REGISTER</button>
-              </form>
-              
-              <script>
-                function redirectToLanding(event) {
-                  event.preventDefault(); // stop form from submitting the usual way
-                  window.location.href = 'facultylandingpage.html'; // redirect to landing page
-                }
-              </script>
-        <p class="login-link">
-            Already have an account? <a href="facultylogin.html">LOGIN</a>
-          </p>          
-      </div>
-      </body>
+    <div class="student-course-row">
+      <input type="text" name="facultyId" placeholder="Faculty ID Number" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+      <input type="text" name="department" list="departments" placeholder="Department" required>
+      <datalist id="departments">
+        <option value="Computer Studies">
+        <option value="College of Engineering">
+        <option value="College of Education">
+        <option value="College of Entrepreneurship">
+        <option value="College of Business Administration and Accountancy">
+      </datalist>
+    </div>
 
+    <button type="submit" class="btn">REGISTER</button>
+  </form>
+
+  <p class="login-link">
+    Already have an account? <a href="facultylogin.html">LOGIN</a>
+  </p>
+</div>
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.querySelector("#facultyForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Password confirmation check
+  const password = formData.get("password");
+  const confirmPassword = formData.get("confirmPassword");
+
+  if (password !== confirmPassword) {
+    Swal.fire({
+      icon: "error",
+      title: "Password Mismatch",
+      text: "Passwords do not match. Please try again."
+    });
+    return;
+  }
+
+  fetch("bEnd/facultyRegistration.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "success") {
+      Swal.fire({
+        icon: "success",
+        title: data.title,
+        text: data.message,
+        timer: 1000,
+        showConfirmButton: false,
+        allowOutsideClick: false
+      }).then(() => {
+        window.location.href = "facultylogin.html";
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: data.title,
+        text: data.message
+      });
+    }
+  })
+  .catch(() => {
+    Swal.fire({
+      icon: "error",
+      title: "Oops!",
+      text: "Something went wrong. Please try again."
+    });
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+-- DB_IM
+
+-- Shared user table
+CREATE TABLE Users (
+    users_id NUMBER PRIMARY KEY,
+    first_name VARCHAR2(50),
+    last_name VARCHAR2(50),
+    password VARCHAR2(100)
+);
+
+-- Student table
+CREATE TABLE Students (
+    users_id NUMBER PRIMARY KEY REFERENCES Users(users_id),
+    student_number VARCHAR2(20) UNIQUE,
+    course VARCHAR2(100)
+);
+
+-- Faculty table
+CREATE TABLE Faculty (
+    users_id NUMBER PRIMARY KEY REFERENCES Users(users_id),
+    faculty_id VARCHAR2(20) UNIQUE,
+    department VARCHAR2(100)
+);
+
+-- Books Table
+CREATE TABLE Books (
+    book_id NUMBER PRIMARY KEY,
+    title VARCHAR2(255),
+    author VARCHAR2(100),
+    isbn VARCHAR2(20),
+    genre VARCHAR2(50),
+    publication_year NUMBER(4),
+    copies_available NUMBER,
+    book_cover BLOB
+);
+
+
+-- BOOKS BORROWED table
+CREATE TABLE BooksBorrowed (
+    borrowed_id NUMBER PRIMARY KEY,
+    book_id NUMBER,
+    users_id NUMBER,
+    borrowed_date DATE,
+    due_date DATE,
+    return_date DATE,
+    status VARCHAR2(10),
+    CONSTRAINT fk_books_borrowed_book FOREIGN KEY (book_id) REFERENCES Books(book_id),
+    CONSTRAINT fk_books_borrowed_user FOREIGN KEY (users_id) REFERENCES Users(users_id),
+    CONSTRAINT chk_books_borrowed_status CHECK (status IN ('borrowed', 'returned', 'overdue'))
+);
+
+-- ROOMS table
+CREATE TABLE Rooms (
+    room_id NUMBER PRIMARY KEY,
+    room_number VARCHAR2(20),
+    capacity NUMBER,
+    is_active CHAR(1) CHECK (is_active IN ('Y', 'N')) -- Since Oracle 11g doesn’t have BOOLEAN type
+);
+
+-- ROOM RESERVATIONS table
+CREATE TABLE RoomReservations (
+    reservation_id NUMBER PRIMARY KEY,
+    users_id NUMBER,
+    room_id NUMBER,
+    reservation_date DATE,
+    members VARCHAR2(255),
+    purpose VARCHAR2(255),
+    start_time TIMESTAMP,
+    end_time TIMESTAMP,
+    status VARCHAR2(10),
+    CONSTRAINT fk_reservation_user FOREIGN KEY (users_id) REFERENCES Users(users_id),
+    CONSTRAINT fk_reservation_room FOREIGN KEY (room_id) REFERENCES Rooms(room_id),
+    CONSTRAINT chk_reservation_status CHECK (status IN ('pending', 'approved', 'rejected'))
+);

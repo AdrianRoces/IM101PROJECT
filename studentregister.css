@@ -215,8 +215,18 @@ body {
     font-weight: bold;
 }
 
+.student-course-row input[type="password"] {
+  width: 600px; /* same as the button width */
+  max-width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  background-color: #e6e1e1;
+  color: #004e99; /* text color fixed */
+  font-weight: bold;
+}
 
-  
   
   button {
     background-color: #004494;

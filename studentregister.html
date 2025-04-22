@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Library Transactions</title>
   <link rel="stylesheet" href="studentregister.css"/>
-<div class="header">
+  <!-- SweetAlert2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.8/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="header">
     <div class="header-content">
       <img src="pictures/Qcu logo.png" alt="QCU Logo" class="university-logo" />
       <div class="university-info">
@@ -26,52 +31,99 @@
     </div>
   </div>
 
-<body>
-  
-    <div class="register-container">
-        <h2>REGISTER</h2>
-        <div class="name-row">
-            <input type="text" placeholder="First Name">
-            <input type="text" placeholder="Last Name">
-          </div>
-      
-          <div class="student-course-row">
-            <input type="text" placeholder="Student Number">
-            <input type="text" placeholder="Password">
-            <input type="text" list="course" placeholder="course">
-<datalist id="course">
-  <option value="Bachelor of Science in Information and Technology">
-  <option value="Bachelor of Science in Information System">
-  <option value="Bachelor of Sciece in Computer Science">
-  <option value="Bachelor of Science in Industrial Engineering">
-    <option value="Bachelor of Science in Electrical Engineering">
-    <option value="Bachelor of Science in Entrepreneurship">
-    <option value="Bachelor of Science in Accountancy">
-    <option value="Bachelor of Science in Management Accounting">
-    <option value="Bachelor of Science in Early Education">
+  <div class="register-container">
+    <h2>REGISTER</h2>
 
-
-
-
-
-</datalist>
-
-          </div>
-        <form>
-          
-            <form onsubmit="redirectToLanding(event)">
-                <button type="submit" class="btn">REGISTER</button>
-              </form>
-              
-              <script>
-                function redirectToLanding(event) {
-                  event.preventDefault(); // stop form from submitting the usual way
-                  window.location.href = 'studentlandingpage.html'; // redirect to landing page
-                }
-              </script>
-        <p class="login-link">
-            Already have an account? <a href="studentlogin.html">LOGIN</a>
-          </p>          
+    <form id="registrationForm">
+      <div class="name-row">
+        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="lastName" placeholder="Last Name" required>
       </div>
-      </body>
 
+      <div class="student-course-row">
+        <input type="text" name="studentNumber" placeholder="Student Number" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+        <input type="text" name="course" list="course" placeholder="Course" required>
+        <datalist id="course">
+          <option value="Bachelor of Science in Information and Technology">
+          <option value="Bachelor of Science in Information System">
+          <option value="Bachelor of Science in Computer Science">
+          <option value="Bachelor of Science in Industrial Engineering">
+          <option value="Bachelor of Science in Electrical Engineering">
+          <option value="Bachelor of Science in Entrepreneurship">
+          <option value="Bachelor of Science in Accountancy">
+          <option value="Bachelor of Science in Management Accounting">
+          <option value="Bachelor of Science in Early Education">
+        </datalist>
+      </div>
+
+      <button type="submit" class="btn">REGISTER</button>
+    </form>
+
+    <p class="login-link">
+      Already have an account? <a href="studentlogin.html">LOGIN</a>
+    </p>
+  </div>
+
+  <!-- SweetAlert2 JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    document.querySelector("#registrationForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent normal form submission
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // Password confirmation check
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
+
+    if (password !== confirmPassword) {
+        Swal.fire({
+            icon: "error",
+            title: "Password Mismatch",
+            text: "Passwords do not match. Please try again."
+        });
+        return;
+    }
+
+    fetch("bEnd/studentRegister.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "success") {
+            Swal.fire({
+                icon: "success",
+                title: data.title,
+                text: data.message,
+                timer: 1000,
+                showConfirmButton: false,
+                allowOutsideClick: false
+            }).then(() => {
+                window.location.href = "studentlogin.html";
+            });
+        } else {
+            Swal.fire({
+                icon: "error",  // Show the error icon (x)
+                title: data.title,
+                text: data.message,
+                confirmButtonText: 'OK'
+            });
+        }
+    })
+    .catch(err => {
+        Swal.fire({
+            icon: "error",  // Show the error icon (x)
+            title: "Oops!",
+            text: "Something went wrong. Please try again."
+        });
+    });
+});
+
+  </script>
+</body>
+</html>
