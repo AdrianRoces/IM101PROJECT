@@ -1,0 +1,355 @@
+.room-reserve-wrapper * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.room-reserve-wrapper {
+  background-color: #f5f7fa;
+  width: 100%;
+  min-height: auto;
+  height: auto;
+  padding-bottom: 40px;
+}
+
+.room-reserve-wrapper .hidden {
+  display: none !important;
+}
+
+.room-reserve-wrapper .app-container {
+  display: flex;
+  min-height: auto;
+}
+
+.room-reserve-wrapper .main-content {
+  margin-left: 280px;
+  flex: 1;
+  padding: 20px 40px;
+  background-color: #f5f7fa;
+}
+
+.room-reserve-wrapper .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.room-reserve-wrapper .university-info {
+  display: flex;
+  align-items: center;
+}
+
+.room-reserve-wrapper .logo {
+  width: 60px;
+  height: 60px;
+  background-color: #004e99;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.room-reserve-wrapper .logo-icon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+}
+
+.room-reserve-wrapper .university-info h1 {
+  font-size: 24px;
+  color: #004e99;
+}
+
+.room-reserve-wrapper .university-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+.room-reserve-wrapper .app-title {
+  font-size: 28px;
+  color: #004e99;
+  font-weight: 700;
+}
+
+.room-reserve-wrapper .dashboard h2 {
+  color: #004e99;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.room-reserve-wrapper .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.room-reserve-wrapper .card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-reserve-wrapper .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.room-reserve-wrapper .card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.room-reserve-wrapper .card-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 15px;
+}
+
+.room-reserve-wrapper .card h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.room-reserve-wrapper .btn {
+  background-color: #004e99;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.room-reserve-wrapper .btn:hover {
+  background-color: #147ee3;
+}
+
+.room-reserve-wrapper .btn-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.room-reserve-wrapper .btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+.room-reserve-wrapper .reservation-table {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.room-reserve-wrapper .back-btn {
+  background: none;
+  border: none;
+  color: #004e99;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.room-reserve-wrapper .back-btn:hover {
+  color: #147ee3;
+}
+
+.room-reserve-wrapper .table-container {
+  overflow-x: auto;
+}
+
+.room-reserve-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.room-reserve-wrapper th,
+.room-reserve-wrapper td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.room-reserve-wrapper th {
+  background-color: #f8f9fa;
+  color: #004e99;
+  font-weight: 600;
+}
+
+.room-reserve-wrapper tr:hover {
+  background-color: #f8f9fa;
+}
+
+.room-reserve-wrapper .status {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.room-reserve-wrapper .status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.room-reserve-wrapper .status-approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.room-reserve-wrapper .status-rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.room-reserve-wrapper .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.room-reserve-wrapper .modal-content {
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.room-reserve-wrapper .modal-header {
+  padding: 20px;
+  background-color: #004e99;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-reserve-wrapper .modal-header h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.room-reserve-wrapper .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.room-reserve-wrapper form {
+  padding: 20px;
+}
+
+.room-reserve-wrapper .form-group {
+  margin-bottom: 20px;
+}
+
+.room-reserve-wrapper .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.room-reserve-wrapper .form-group input,
+.room-reserve-wrapper .form-group select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.room-reserve-wrapper .number-input {
+  display: flex;
+  align-items: center;
+}
+
+.room-reserve-wrapper .number-input button {
+  width: 30px;
+  height: 30px;
+  background-color: #004e99;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.room-reserve-wrapper .number-input input {
+  width: 60px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.room-reserve-wrapper .help-text {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.room-reserve-wrapper .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .room-reserve-wrapper .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .room-reserve-wrapper .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .room-reserve-wrapper .app-title {
+    margin-top: 15px;
+  }
+
+  .room-reserve-wrapper .modal-content {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .room-reserve-wrapper .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .room-reserve-wrapper .form-actions {
+    flex-direction: column;
+  }
+
+  .room-reserve-wrapper .btn {
+    width: 100%;
+  }
+}
