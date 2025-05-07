@@ -7,10 +7,14 @@
 
 .room-reserve-wrapper {
   background-color: #f5f7fa;
-  width: 100%;
-  min-height: auto;
-  height: auto;
-  padding-bottom: 40px;
+  width: calc(100% - 280px);
+  height: 100%;
+  padding: 20px;
+  margin-left: 280px;
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .room-reserve-wrapper .hidden {
@@ -18,14 +22,19 @@
 }
 
 .room-reserve-wrapper .app-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
   display: flex;
-  min-height: auto;
+  flex-direction: column;
+  align-items: center;
 }
 
 .room-reserve-wrapper .main-content {
-  margin-left: 280px;
+  margin-left: 0;
+  margin-top: 0;
   flex: 1;
-  padding: 20px 40px;
+  padding: 20px;
   background-color: #f5f7fa;
 }
 
@@ -76,24 +85,40 @@
   font-weight: 700;
 }
 
+.room-reserve-wrapper .dashboard {
+  width: calc(100% - 120px);
+  text-align: center;
+  position: fixed;
+  top: 12rem;
+  left: 170px;
+  overflow: hidden;
+}
+
 .room-reserve-wrapper .dashboard h2 {
   color: #004e99;
-  margin-bottom: 30px;
-  font-size: 24px;
+  margin-bottom: 40px;
+  font-size: 28px;
 }
 
 .room-reserve-wrapper .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .room-reserve-wrapper .card {
+  flex: 0 0 300px;
   background: white;
   border-radius: 10px;
   padding: 25px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .room-reserve-wrapper .card:hover {
@@ -114,20 +139,22 @@
 }
 
 .room-reserve-wrapper .card h3 {
-  font-size: 18px;
-  color: #333;
+  font-size: 20px;
+  color: #004e99;
+  margin-top: 15px;
 }
 
 .room-reserve-wrapper .btn {
   background-color: #004e99;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 25px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease;
-  width: 100%;
+  width: auto;
+  min-width: 150px;
   margin-top: 15px;
 }
 
@@ -149,17 +176,27 @@
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 12rem;
+  left: 345px;
+  width: calc(100% - 100px);
+  max-width: 1000px;
+  overflow: hidden;
+  height: calc(100vh - 250px);
 }
 
 .room-reserve-wrapper .back-btn {
+  position: absolute;
+  top: 10px;
+  left: 25px;
   background: none;
   border: none;
   color: #004e99;
   font-size: 16px;
   cursor: pointer;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .room-reserve-wrapper .back-btn:hover {
@@ -167,29 +204,40 @@
 }
 
 .room-reserve-wrapper .table-container {
-  overflow-x: auto;
+  overflow-x: hidden;
+  margin-top: 20px;
+  height: calc(100% - 60px);
 }
 
 .room-reserve-wrapper table {
   width: 100%;
   border-collapse: collapse;
+  background: white;
 }
 
-.room-reserve-wrapper th,
+.room-reserve-wrapper th {
+  background-color: #004e99;
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 .room-reserve-wrapper td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #e0e0e0;
+  background: white;
 }
 
-.room-reserve-wrapper th {
-  background-color: #f8f9fa;
+.room-reserve-wrapper .table-title {
   color: #004e99;
-  font-weight: 600;
-}
-
-.room-reserve-wrapper tr:hover {
-  background-color: #f8f9fa;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .room-reserve-wrapper .status {
@@ -319,8 +367,39 @@
   margin-top: 20px;
 }
 
-/* Responsive */
+@media (max-width: 1200px) {
+  .room-reserve-wrapper .cards {
+    gap: 20px;
+  }
+
+  .room-reserve-wrapper .card {
+    flex: 0 0 280px;
+  }
+
+  .room-reserve-wrapper .reservation-table {
+    width: calc(100% - 350px);
+  }
+}
+
+@media (max-width: 992px) {
+  .room-reserve-wrapper .cards {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+
+  .room-reserve-wrapper .dashboard,
+  .room-reserve-wrapper .reservation-table {
+    width: calc(100% - 300px);
+    left: 100px;
+  }
+}
+
 @media (max-width: 768px) {
+  .room-reserve-wrapper {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 150px;
+  }
+
   .room-reserve-wrapper .main-content {
     margin-left: 0;
     padding: 20px;
@@ -337,6 +416,10 @@
 
   .room-reserve-wrapper .modal-content {
     width: 95%;
+  }
+
+  .room-reserve-wrapper .cards {
+    grid-template-columns: minmax(250px, 400px);
   }
 }
 
